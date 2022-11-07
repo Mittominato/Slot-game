@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>SLOT</title>
+        <style type="text/css" media="all">
+            #container {
+                width: 80vw;
+                height: 50vh;
+                border-right: none;
+                margin: 50px auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-content: space-around;
+                box-sizing: border-box;
+            }
+            .roll {
+                display: inline-block;
+                margin: 10px auto;
+                padding: 10px;
+                display: flex;
+                background-color: white;
+                border: 2px solid skyblue;
+            }
+            .auto {
+                display: inline-block;
+                width: 32%;
+                margin: 10px auto;
+                justify-content: center;
+                padding: 10px;
+                display: flex;
+                background-color: white;
+                border: 2px solid orange;
+            }
+            .depo {
+                display: inline-block;
+                margin: 10px auto;
+                width: 22%;
+                padding: 10px;
+                display: flex;
+                background-color: white;
+                border: 2px solid salmon;
+            }
+            .kotak {
+                width: 45%;
+                height: 32%;
+                box-sizing: border-box;
+                border: 2px solid black;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <h2></h2>
+        <div id="container">
+            <div class="kotak">
+                
+            </div>
+            <div class="kotak">
+                
+            </div>
+            <div class="kotak">
+                
+            </div>
+            <div class="kotak">
+                
+            </div>
+            <div class="kotak">
+                
+            </div>
+            <div class="kotak">
+                
+            </div>
+        </div>
+        <button type="button" class="roll">SPIN MANUAL</button>
+        <button type="button" class="auto"><p>10</p><p>X</p></button>
+        <button type="button" class="depo">DEPOSIT</button>
+        <script type="text/javascript" charset="utf-8">
+let depo = document.querySelectorAll(".auto p");
+let tombol = document.querySelectorAll("button");
+const screen = Array.from(document.querySelectorAll(".kotak"));
+
+//TOMBOL Manual 
+tombol[0].onclick = () => {
+     waktu();
+}
+
+//TOMBOL AUTO 10X
+tombol[1].onclick = () => {
+    tombol[1].disabled = true;
+    setTimeout(() => {
+        tombol[1].disabled = false;
+    },10000);
+    if (depo[0].textContent > 0 && depo[0].textContent <= 10){
+    
+    setTimeout(() => {
+        waktu();
+        depo[0].textContent = angkabtn-1;
+    },0);
+    let auto = setInterval(() => {
+        waktu();
+        depo[0].textContent = (angkabtn0--);
+    },1000);
+    
+    setTimeout(() => {
+        clearInterval(auto);
+    },9000);
+    }else {
+        document.querySelector(".auto").style.backgroundColor = "red";
+        tombol[1].disabled = false;
+        tombol[2].style.backgroundColor = "skyblue";
+    }
+};
+//TOMBOL Deposit 
+tombol[2].onclick = () => {
+    if (depo[0].textContent <= 0) { depo[0].textContent = angkabtn; 
+        angkabtn0 = angkabtn10-1;
+        document.querySelector(".auto").style.backgroundColor = "white";
+        tombol[2].style.backgroundColor = "white";
+    }
+}
+
+//Decrement 10 - 0;
+let angkabtn = 10;
+let angkabtn10 = angkabtn-1;
+let angkabtn0 = angkabtn10-1;
+
+//Function Random Warna
+let waktu = () => { let waktu = setInterval(() => {
+      let random = screen.map(e => 
+            e.style.backgroundImage = "url("+warna()+")");
+    },10)
+    setTimeout(() => {
+        clearInterval(waktu);
+        console.log(screen.map(e => 
+            e.style.backgroundColor = warna()));
+     }, 500);
+};
+
+// Angka Random 
+const warna = () => {
+    let angka = Math.floor(Math.random()*9);
+    switch(angka){
+        case 0 : return "aov.png";
+        case 1 : return "asphalt.png";
+        case 2 : return "free_fire.png";
+        case 3 : return "genshinimpact.png";
+        case 4 : return "honkaiimpact3.png";
+        case 5 : return "hyperfront.png";
+        case 6 : return "mlbb.png";
+        case 7 : return "minecraft.png";
+        case 8 : return "pubgm.png";
+    }
+}
+screen.map(e => 
+            e.style.backgroundImage = "url("+warna()+")");
+        </script>
+    </body>
+</html>
