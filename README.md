@@ -1,4 +1,5 @@
 # Slot-game
+0. HTML CSS AND JAVASCRIPT combined in one file (html).
 1. Manual Spin
 2. Auto Spin 10X
 3. If Auto Spin Reach 0, It will automatically stop.
